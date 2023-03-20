@@ -107,6 +107,13 @@ return packer.startup(function(use)
 	-- multiple text selection
 	use("mg979/vim-visual-multi", { branch = "master" })
 
+	-- debugger
+	use("mfussenegger/nvim-dap")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use("nvim-telescope/telescope-dap.nvim")
+	use("theHamsta/nvim-dap-virtual-text")
+	use("Pocco81/DAPInstall.nvim")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
