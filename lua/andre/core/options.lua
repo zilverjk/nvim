@@ -1,7 +1,8 @@
 local opt = vim.opt --for conciseness
+local cmd = vim.cmd
 
 -- line numbers
-opt.relativenumber = true
+opt.relativenumber = false
 opt.number = true
 
 -- tabs & indentation
@@ -36,3 +37,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.iskeyword:append("-")
+
+-- leading spaces
+cmd("set listchars=space:·")
+cmd("set list")
