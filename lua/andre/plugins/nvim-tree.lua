@@ -11,12 +11,22 @@ vim.g.loaded_netrwPlugin = 1
 vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 
 nvimtree.setup({
+	view = {
+		side = "right",
+	},
 	git = {
 		ignore = false,
 	},
+	filters = {
+		dotfiles = true,
+	},
 	-- change folder arrow icons
 	renderer = {
+		group_empty = true,
 		icons = {
+			show = {
+				git = false,
+			},
 			glyphs = {
 				folder = {
 					arrow_closed = "", -- arrow when folder is closed

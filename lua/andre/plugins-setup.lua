@@ -30,7 +30,9 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
-	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
+	-- Colorschemes
+	use("bluz71/vim-nightfly-guicolors")
+	use("folke/tokyonight.nvim")
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
@@ -107,12 +109,67 @@ return packer.startup(function(use)
 	-- multiple text selection
 	use("mg979/vim-visual-multi", { branch = "master" })
 
-	-- debugger
-	use("mfussenegger/nvim-dap")
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-	use("nvim-telescope/telescope-dap.nvim")
-	use("theHamsta/nvim-dap-virtual-text")
-	use("Pocco81/DAPInstall.nvim")
+	-- buffer
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
+	use({
+		"LukasPietzschmann/telescope-tabs",
+		requires = { "nvim-telescope/telescope.nvim" },
+	})
+
+	-- Comments
+	use({
+		"folke/todo-comments.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+
+	-- Rainbow brackets
+	use("mrjones2014/nvim-ts-rainbow")
+
+	-- Smooth scroll
+	use("karb94/neoscroll.nvim")
+
+	-- Last place
+	use("ethanholz/nvim-lastplace")
+
+	-- Folding code
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+
+	-- Toggle Terminal
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
+
+	-- Template String Toggle
+	use("axelvc/template-string.nvim")
+
+	-- Indent lines
+	use("lukas-reineke/indent-blankline.nvim")
+
+	-- Debugging Nodejs, Go y Python
+	use({
+		"mfussenegger/nvim-dap",
+		opt = true,
+		module = { "dap" },
+		requires = {
+			"theHamsta/nvim-dap-virtual-text",
+			"rcarriga/nvim-dap-ui",
+			"mfussenegger/nvim-dap-python",
+			"nvim-telescope/telescope-dap.nvim",
+			{ "leoluz/nvim-dap-go", module = "dap-go" },
+			{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
+			{ "mxsdev/nvim-dap-vscode-js" },
+			{
+				"microsoft/vscode-js-debug",
+				opt = true,
+				run = "npm install --legacy-peer-deps && npm run compile",
+			},
+		},
+		config = function()
+			require("config.dap").setup()
+		end,
+		disable = false,
+	})
+
+	-- Debugging Rust
+	use("simrat39/rust-tools.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()

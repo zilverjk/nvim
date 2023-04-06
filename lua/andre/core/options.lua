@@ -37,7 +37,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.iskeyword:append("-")
-
+opt.compatible = false
 -- leading spaces
-cmd("set listchars=space:·")
-cmd("set list")
+-- cmd("set listchars=space:·")
+-- cmd("set list!")

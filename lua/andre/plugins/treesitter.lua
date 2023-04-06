@@ -33,4 +33,9 @@ treesitter.setup({
 	},
 	-- auto install above language parsers
 	auto_install = true,
+	rainbow = {
+		enable = true,
+		extended_mode = true,
+		max_file_lines = nil,
+	},
 })

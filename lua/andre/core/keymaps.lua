@@ -10,6 +10,9 @@ local keymap = vim.keymap -- for conciseness
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>")
 
+-- remap redo
+keymap.set("n", "<C-y>", ":redo<CR>")
+
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
@@ -26,10 +29,9 @@ keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 
-keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
+-- keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
+-- keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
+-- keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
 ----------------------
 -- Plugin Keybinds
@@ -57,23 +59,33 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 -- gitsigns
 keymap.set("n", "<leader>tb", ":Gitsigns toggle_current_line_blame") -- Toggle git blame in the current line
 
--- debugger
-keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>", { buffer = 0 })
-keymap.set("n", "<F10>", ":lua require'dap'.step_over()<CR>", { buffer = 0 })
-keymap.set("n", "<F11>", ":lua require'dap'.step_into()<CR>", { buffer = 0 })
-keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>", { buffer = 0 })
-keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>", { buffer = 0 })
-keymap.set(
-	"n",
-	"<leader>B",
-	":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-	{ buffer = 0 }
-)
-keymap.set(
-	"n",
-	"<leader>lp",
-	":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-	{ buffer = 0 }
-)
-keymap.set("n", "<leader>B", ":lua require'dap'.repl.open()<CR>", { buffer = 0 })
-keymap.set("n", "<leader>dui", "<cmd>lua require'dapui'.toggle()")
+-- bufferline
+keymap.set("n", "<leader>bb", ":bprevious<CR>")
+keymap.set("n", "<leader>bn", ":bnext<CR>")
+keymap.set("n", "<leader>c", ":bd<CR>")
+keymap.set("n", "<leader>bo", ":tabnew<CR>") -- open new tab
+
+-- Telescope-tabs
+keymap.set("n", "<leader>bf", ":Telescope telescope-tabs list_tabs<CR>")
+
+-- Debugger
+keymap.set("n", "<leader>dR", "<cmd>lua require'dap'.run_to_cursor()<CR>") -- Run to Cursor
+keymap.set("n", "<leader>dE", "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<CR>") -- Evaluate Input
+keymap.set("n", "<leader>dC", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>") -- Conditional Breakpoint
+keymap.set("n", "<leader>dU", "<cmd>lua require'dapui'.toggle()<CR>") -- Toggle UI
+keymap.set("n", "<leader>db", "<cmd>lua require'dap'.step_back()<CR>") -- Step Back
+keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>") -- Continue
+keymap.set("n", "<leader>dd", "<cmd>lua require'dap'.disconnect()<CR>") -- Disconnect
+keymap.set("n", "<leader>de", "<cmd>lua require'dapui'.eval()<CR>") -- Evaluate
+keymap.set("n", "<leader>dg", "<cmd>lua require'dap'.session()<CR>") -- Get Session
+keymap.set("n", "<leader>dh", "<cmd>lua require'dap.ui.widgets'.hover()<CR>") -- Hover Variables
+keymap.set("n", "<leader>dS", "<cmd>lua require'dap.ui.widgets'.scopes()<CR>") -- Scopes
+keymap.set("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>") -- Step Into
+keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>") -- Step Over
+keymap.set("n", "<leader>dp", "<cmd>lua require'dap'.pause.toggle()<CR>") -- Pause
+keymap.set("n", "<leader>dq", "<cmd>lua require'dap'.close()<CR>") -- Quit
+keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>") -- Toggle Repl
+keymap.set("n", "<leader>ds", "<cmd>lua require'dap'.continue()<CR>") -- Start
+keymap.set("n", "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<CR>") -- Toggle Breakpoint
+keymap.set("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<CR>") -- Terminate
+keymap.set("n", "<leader>du", "<cmd>lua require'dap'.step_out()<CR>") -- Step Out
