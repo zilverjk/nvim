@@ -143,30 +143,19 @@ return packer.startup(function(use)
 	-- Indent lines
 	use("lukas-reineke/indent-blankline.nvim")
 
-	-- Debugging Nodejs, Go y Python
+	-- Neodev
+	use("folke/neodev.nvim")
+
+	-- Debugging Nodejs
 	use({
-		"mfussenegger/nvim-dap",
+		"microsoft/vscode-js-debug",
+		-- tag = "v1.74.1",
 		opt = true,
-		module = { "dap" },
-		requires = {
-			"theHamsta/nvim-dap-virtual-text",
-			"rcarriga/nvim-dap-ui",
-			"mfussenegger/nvim-dap-python",
-			"nvim-telescope/telescope-dap.nvim",
-			{ "leoluz/nvim-dap-go", module = "dap-go" },
-			{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
-			{ "mxsdev/nvim-dap-vscode-js" },
-			{
-				"microsoft/vscode-js-debug",
-				opt = true,
-				run = "npm install --legacy-peer-deps && npm run compile",
-			},
-		},
-		config = function()
-			require("config.dap").setup()
-		end,
-		disable = false,
+		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 	})
+	use("mfussenegger/nvim-dap")
+	use("mxsdev/nvim-dap-vscode-js")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
 	-- Debugging Rust
 	use("simrat39/rust-tools.nvim")

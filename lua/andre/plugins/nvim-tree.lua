@@ -18,7 +18,7 @@ nvimtree.setup({
 		ignore = false,
 	},
 	filters = {
-		dotfiles = true,
+		dotfiles = false,
 	},
 	-- change folder arrow icons
 	renderer = {

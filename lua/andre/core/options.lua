@@ -1,5 +1,5 @@
 local opt = vim.opt --for conciseness
-local cmd = vim.cmd
+-- local cmd = vim.cmd
 
 -- line numbers
 opt.relativenumber = false

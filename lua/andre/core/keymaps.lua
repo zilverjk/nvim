@@ -8,10 +8,10 @@ local keymap = vim.keymap -- for conciseness
 ---------------------
 
 -- use jk to exit insert mode
-keymap.set("i", "jk", "<ESC>")
+-- keymap.set("i", "jk", "<ESC>")
 
 -- remap redo
-keymap.set("n", "<C-y>", ":redo<CR>")
+-- keymap.set("n", "<C-y>", ":redo<CR>")
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
@@ -22,6 +22,13 @@ keymap.set("n", "x", '"_x')
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>") -- increment
 keymap.set("n", "<leader>-", "<C-x>") -- decrement
+
+-- move lines or blocks
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- preserve clipboard copy while highlighting another word
+keymap.set("x", "<leader>p", '"_dP')
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
@@ -62,30 +69,30 @@ keymap.set("n", "<leader>tb", ":Gitsigns toggle_current_line_blame") -- Toggle g
 -- bufferline
 keymap.set("n", "<leader>bb", ":bprevious<CR>")
 keymap.set("n", "<leader>bn", ":bnext<CR>")
-keymap.set("n", "<leader>c", ":bd<CR>")
+keymap.set("n", "<leader>bc", ":bd<CR>")
 keymap.set("n", "<leader>bo", ":tabnew<CR>") -- open new tab
 
 -- Telescope-tabs
 keymap.set("n", "<leader>bf", ":Telescope telescope-tabs list_tabs<CR>")
 
 -- Debugger
-keymap.set("n", "<leader>dR", "<cmd>lua require'dap'.run_to_cursor()<CR>") -- Run to Cursor
-keymap.set("n", "<leader>dE", "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<CR>") -- Evaluate Input
-keymap.set("n", "<leader>dC", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>") -- Conditional Breakpoint
-keymap.set("n", "<leader>dU", "<cmd>lua require'dapui'.toggle()<CR>") -- Toggle UI
-keymap.set("n", "<leader>db", "<cmd>lua require'dap'.step_back()<CR>") -- Step Back
-keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>") -- Continue
-keymap.set("n", "<leader>dd", "<cmd>lua require'dap'.disconnect()<CR>") -- Disconnect
-keymap.set("n", "<leader>de", "<cmd>lua require'dapui'.eval()<CR>") -- Evaluate
-keymap.set("n", "<leader>dg", "<cmd>lua require'dap'.session()<CR>") -- Get Session
-keymap.set("n", "<leader>dh", "<cmd>lua require'dap.ui.widgets'.hover()<CR>") -- Hover Variables
-keymap.set("n", "<leader>dS", "<cmd>lua require'dap.ui.widgets'.scopes()<CR>") -- Scopes
-keymap.set("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>") -- Step Into
-keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>") -- Step Over
-keymap.set("n", "<leader>dp", "<cmd>lua require'dap'.pause.toggle()<CR>") -- Pause
-keymap.set("n", "<leader>dq", "<cmd>lua require'dap'.close()<CR>") -- Quit
-keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>") -- Toggle Repl
-keymap.set("n", "<leader>ds", "<cmd>lua require'dap'.continue()<CR>") -- Start
-keymap.set("n", "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<CR>") -- Toggle Breakpoint
-keymap.set("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<CR>") -- Terminate
-keymap.set("n", "<leader>du", "<cmd>lua require'dap'.step_out()<CR>") -- Step Out
+-- keymap.set("n", "<leader>dR", "<cmd>lua require'dap'.run_to_cursor()<CR>") -- Run to Cursor
+-- keymap.set("n", "<leader>dE", "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<CR>") -- Evaluate Input
+-- keymap.set("n", "<leader>dC", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<CR>") -- Conditional Breakpoint
+-- keymap.set("n", "<leader>dU", "<cmd>lua require'dapui'.toggle()<CR>") -- Toggle UI
+-- keymap.set("n", "<leader>db", "<cmd>lua require'dap'.step_back()<CR>") -- Step Back
+-- keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>") -- Continue
+-- keymap.set("n", "<leader>dd", "<cmd>lua require'dap'.disconnect()<CR>") -- Disconnect
+-- keymap.set("n", "<leader>de", "<cmd>lua require'dapui'.eval()<CR>") -- Evaluate
+-- keymap.set("n", "<leader>dg", "<cmd>lua require'dap'.session()<CR>") -- Get Session
+-- keymap.set("n", "<leader>dh", "<cmd>lua require'dap.ui.widgets'.hover()<CR>") -- Hover Variables
+-- keymap.set("n", "<leader>dS", "<cmd>lua require'dap.ui.widgets'.scopes()<CR>") -- Scopes
+-- keymap.set("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>") -- Step Into
+-- keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>") -- Step Over
+-- keymap.set("n", "<leader>dp", "<cmd>lua require'dap'.pause.toggle()<CR>") -- Pause
+-- keymap.set("n", "<leader>dq", "<cmd>lua require'dap'.close()<CR>") -- Quit
+-- keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>") -- Toggle Repl
+-- keymap.set("n", "<leader>ds", "<cmd>lua require'dap'.continue()<CR>") -- Start
+-- keymap.set("n", "<leader>dt", "<cmd>lua require'dap'.toggle_breakpoint()<CR>") -- Toggle Breakpoint
+-- keymap.set("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<CR>") -- Terminate
+-- keymap.set("n", "<leader>du", "<cmd>lua require'dap'.step_out()<CR>") -- Step Out
