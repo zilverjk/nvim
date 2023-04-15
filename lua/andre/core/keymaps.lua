@@ -72,6 +72,7 @@ keymap.set("n", "<leader>bb", ":bprevious<CR>")
 keymap.set("n", "<leader>bn", ":bnext<CR>")
 keymap.set("n", "<leader>bc", ":bd<CR>")
 keymap.set("n", "<leader>bo", ":tabnew<CR>") -- open new tab
+keymap.set("n", "<leader>bce", ":BufOnly<CR>") -- open new tab
 
 -- Telescope-tabs
 keymap.set("n", "<leader>bf", ":Telescope telescope-tabs list_tabs<CR>")

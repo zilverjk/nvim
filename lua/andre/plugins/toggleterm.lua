@@ -18,7 +18,7 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 toggleterm.setup({
 	direction = "horizontal",
-	size = 30,
+	size = 20,
 	open_mapping = [[<C-t>]],
 	close_on_exist = false,
 })

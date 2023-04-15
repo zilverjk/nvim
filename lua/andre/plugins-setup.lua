@@ -116,6 +116,7 @@ return packer.startup(function(use)
 		"LukasPietzschmann/telescope-tabs",
 		requires = { "nvim-telescope/telescope.nvim" },
 	})
+	use({ "schickling/vim-bufonly" })
 
 	-- Comments
 	use({
