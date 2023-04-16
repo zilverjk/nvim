@@ -65,7 +65,7 @@ keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git bra
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
 -- gitsigns
-keymap.set("n", "<leader>tb", ":Gitsigns toggle_current_line_blame") -- Toggle git blame in the current line
+-- keymap.set("n", "<leader>tb", ":Gitsigns toggle_current_line_blame") -- Toggle git blame in the current line
 
 -- bufferline
 keymap.set("n", "<leader>bb", ":bprevious<CR>")

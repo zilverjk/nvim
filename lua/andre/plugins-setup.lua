@@ -158,6 +158,7 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap")
 	use("mxsdev/nvim-dap-vscode-js")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use("theHamsta/nvim-dap-virtual-text")
 
 	-- Debugging Rust
 	use("simrat39/rust-tools.nvim")
