@@ -148,6 +148,9 @@ return packer.startup(function(use)
 	-- Neodev
 	use("folke/neodev.nvim")
 
+	-- Speedup the startup
+	use("lewis6991/impatient.nvim")
+
 	-- Debugging Nodejs
 	use({
 		"microsoft/vscode-js-debug",

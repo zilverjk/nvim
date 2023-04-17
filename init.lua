@@ -1,3 +1,4 @@
+require("andre.plugins.impatient")
 require("andre.plugins-setup")
 require("andre.core.options")
 require("andre.core.keymaps")
