@@ -6,12 +6,8 @@ local keymap = vim.keymap -- for conciseness
 ---------------------
 -- General Keymaps
 ---------------------
-
--- use jk to exit insert mode
--- keymap.set("i", "jk", "<ESC>")
-
--- remap redo
--- keymap.set("n", "<C-y>", ":redo<CR>")
+-- avoid to copy when delete something
+keymap.set("n", "d", '"_d')
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
