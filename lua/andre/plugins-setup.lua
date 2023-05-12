@@ -130,9 +130,6 @@ return packer.startup(function(use)
 	-- Smooth scroll
 	use("karb94/neoscroll.nvim")
 
-	-- Last place
-	use("ethanholz/nvim-lastplace")
-
 	-- Folding code
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
@@ -147,9 +144,6 @@ return packer.startup(function(use)
 
 	-- Neodev
 	use("folke/neodev.nvim")
-
-	-- Speedup the startup
-	use("lewis6991/impatient.nvim")
 
 	-- Debugging Nodejs
 	use({
