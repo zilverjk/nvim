@@ -82,7 +82,7 @@ local plugins = {
 	"tpope/vim-fugitive",
 	"lewis6991/gitsigns.nvim", -- show line modifications on left hand side
 	-- multiple text selection
-  {"mg979/vim-visual-multi", branch = "master" },
+	{ "mg979/vim-visual-multi", branch = "master" },
 
 	-- buffer
 	{ "akinsho/bufferline.nvim", version = "v3.*", dependencies = "nvim-tree/nvim-web-devicons" },
@@ -131,6 +131,16 @@ local plugins = {
 
 	-- Debugging Rust
 	"simrat39/rust-tools.nvim",
+
+	-- Database
+	{
+		"tpope/vim-dadbod",
+		dependencies = {
+			"kristijanhusak/vim-dadbod-ui",
+			"kristijanhusak/vim-dadbod-completion",
+			"tpope/vim-dotenv",
+		},
+	},
 }
 
 local opts = {}
