@@ -19,6 +19,7 @@ nvimtree.setup({
 	},
 	filters = {
 		dotfiles = false,
+		exclude = { ".DS_Store" },
 	},
 	-- change folder arrow icons
 	renderer = {
