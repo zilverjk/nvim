@@ -31,7 +31,6 @@ return {
         "tsserver",
         "html",
         "cssls",
-        "tailwindcss",
         "lua_ls",
         "graphql",
         "emmet_ls",
@@ -49,7 +48,7 @@ return {
         "eslint", -- ts/js linter
       },
       -- auto-install configured servers (with lspconfig)
-      automatic_installation = true,
+      automatic_installation = false,
     })
   end,
 }
