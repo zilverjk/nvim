@@ -4,7 +4,6 @@ return {
   version = "*",
   opts = {
     options = {
-      mode = "tabs",
       buffer_close_icon = "",
       close_icon = "",
       show_close_icon = false,
