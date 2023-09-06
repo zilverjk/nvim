@@ -64,3 +64,6 @@ keymap.set("n", "<leader>bce", ":BufOnly<CR>") -- open new tab
 
 -- Telescope-tabs
 keymap.set("n", "<leader>bf", ":Telescope telescope-tabs list_tabs<CR>")
+
+-- Noice
+keymap.set("n", "<leader>nn", ":NoiceDismiss<CR>", { noremap = true })
