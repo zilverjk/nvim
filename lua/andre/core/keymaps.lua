@@ -32,10 +32,6 @@ keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 
--- keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
--- keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
--- keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
-
 ----------------------
 -- Plugin Keybinds
 ----------------------
@@ -60,10 +56,6 @@ keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git co
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
--- gitsigns
--- keymap.set("n", "<leader>tb", ":Gitsigns toggle_current_line_blame") -- Toggle git blame in the current line
-
--- bufferline
 keymap.set("n", "<leader>bb", ":bprevious<CR>")
 keymap.set("n", "<leader>bn", ":bnext<CR>")
 keymap.set("n", "<leader>x", ":bd<CR>")
