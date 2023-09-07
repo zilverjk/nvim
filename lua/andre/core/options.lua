@@ -38,5 +38,5 @@ opt.splitbelow = true
 opt.iskeyword:append("-")
 opt.compatible = false
 
--- turn off swapfile
-opt.swapfile = false
+-- swapfile
+opt.swapfile = true
