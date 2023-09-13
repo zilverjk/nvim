@@ -46,6 +46,10 @@ return {
         "prettier", -- ts/js formatter
         "stylua", -- lua formatter
         "eslint", -- ts/js linter
+        "mypy",
+        "ruff",
+        "pyright",
+        "black",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = false,
