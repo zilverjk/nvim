@@ -9,6 +9,7 @@ opt.tabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
+opt.listchars = [[tab:▸ ,trail:·,space:·]]
 
 -- line wrapping
 opt.wrap = false
