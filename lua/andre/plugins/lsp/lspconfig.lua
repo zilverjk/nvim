@@ -9,6 +9,12 @@ return {
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
 
+    local lspconfig_util_status_ok, lspconfig_util = pcall(require, "lspconfig.util")
+    if not lspconfig_util_status_ok then
+      print("NO SE CARGO!!!")
+      return
+    end
+
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -57,6 +63,12 @@ return {
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+      if client.name == "tsserver" then
+        -- Need to disable formatting because we will use eslint or prettier instead
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
@@ -79,7 +91,39 @@ return {
     -- configure typescript server with plugin
     lspconfig["tsserver"].setup({
       capabilities = capabilities,
+      filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+      init_options = {
+        maxTsServerMemory = 2048,
+        preferences = {
+          importModuleSpecifierPreference = "relative",
+        },
+      },
       on_attach = on_attach,
+      root_dir = function(filepath)
+        local tsconfig_ancestor = lspconfig_util.root_pattern("tsconfig.json")(filepath)
+        if not tsconfig_ancestor then
+          return nil
+        end
+
+        local git_ancestor = lspconfig_util.find_git_ancestor(filepath)
+        if not git_ancestor then
+          return tsconfig_ancestor
+        end
+
+        return git_ancestor
+      end,
+      single_file_support = false,
+      typescript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+        },
+      },
     })
 
     -- configure css server
