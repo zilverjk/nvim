@@ -11,7 +11,7 @@ return {
 
     local lspconfig_util_status_ok, lspconfig_util = pcall(require, "lspconfig.util")
     if not lspconfig_util_status_ok then
-      print("NO SE CARGO!!!")
+      print("No se cargó lspconfig_util.")
       return
     end
 
