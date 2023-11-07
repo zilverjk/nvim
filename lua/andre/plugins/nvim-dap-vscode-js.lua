@@ -25,18 +25,17 @@ return {
     -- Config para debuggear Node
     for _, language in ipairs(node) do
       nvim_dap.configurations[language] = {
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "Launch file",
-          program = "${file}",
-          cwd = "${workspaceFolder}",
-        },
+        -- {
+        --   type = "pwa-node",
+        --   request = "launch",
+        --   name = "Launch file",
+        --   program = "${file}",
+        --   cwd = "${workspaceFolder}",
+        -- },
         {
           type = "pwa-node",
           request = "attach",
           name = "Attach",
-          processId = require("dap.utils").pick_process,
           cwd = "${workspaceFolder}",
         },
       }
@@ -80,6 +79,16 @@ return {
     {
       "microsoft/vscode-js-debug",
       build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+    },
+    {
+      "theHamsta/nvim-dap-virtual-text",
+      config = {
+        enabled = true,
+        enabled_commands = true,
+        highlight_changed_variables = true,
+        highlight_new_as_changed = false,
+        show_stop_reason = true,
+      },
     },
   },
 }
