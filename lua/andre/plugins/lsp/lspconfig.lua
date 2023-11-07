@@ -64,6 +64,9 @@ return {
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
+      opts.desc = "Orginize imports"
+      keymap.set("n", "<leader>oi", ":OrganizeImports<CR>", opts)
+
       if client.name == "tsserver" then
         -- Need to disable formatting because we will use eslint or prettier instead
         client.server_capabilities.documentFormattingProvider = false
@@ -82,6 +85,13 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
+    local function organize_imports()
+      local params = {
+        command = "_typescript.organizeImports",
+        arguments = { vim.api.nvim_buf_get_name(0) },
+      }
+      vim.lsp.buf.execute_command(params)
+    end
     -- configure html server
     lspconfig["html"].setup({
       capabilities = capabilities,
@@ -95,7 +105,14 @@ return {
       init_options = {
         maxTsServerMemory = 2048,
         preferences = {
+          disableSuggestions = true,
           importModuleSpecifierPreference = "relative",
+        },
+      },
+      commands = {
+        OrganizeImports = {
+          organize_imports,
+          description = "Organize Imports",
         },
       },
       on_attach = on_attach,
