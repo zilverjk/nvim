@@ -20,6 +20,7 @@ opt.smartcase = true
 
 -- cursor line
 opt.cursorline = true
+opt.guicursor = ""
 
 -- appreance
 opt.termguicolors = true
