@@ -143,31 +143,41 @@ return {
       },
     })
 
-    -- configure css server
     lspconfig["cssls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
-    -- configure tailwindcss server
-    -- lspconfig["tailwindcss"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    -- })
+    lspconfig["tailwindcss"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
 
-    -- configure svelte server
     -- lspconfig["svelte"].setup({
     --   capabilities = capabilities,
     --   on_attach = on_attach,
     -- })
+    lspconfig["svelte"].setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
 
-    -- configure prisma orm server
-    -- lspconfig["prismals"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    -- })
+        vim.api.nvim_create_autocmd("BufWritePost", {
+          pattern = { "*.js", "*.ts" },
+          callback = function(ctx)
+            if client.name == "svelte" then
+              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+            end
+          end,
+        })
+      end,
+    })
 
-    -- configure graphql language server
+    lspconfig["prismals"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     lspconfig["graphql"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
