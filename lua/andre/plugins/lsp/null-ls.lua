@@ -32,9 +32,13 @@ return {
           end,
         }),
         -- Python
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.diagnostics.mypy,
-        null_ls.builtins.diagnostics.ruff,
+        formatting.black,
+        diagnostics.mypy,
+        diagnostics.ruff,
+        -- Golang
+        formatting.gofumpt, -- go install -v github.com/incu6us/goimports-reviser/v3@latest
+        formatting.goimports_reviser, -- go install mvdan.cc/gofumpt@latest
+        formatting.golines, -- go install github.com/segmentio/golines@latest
       },
       -- configure format on save
       on_attach = function(current_client, bufnr)
