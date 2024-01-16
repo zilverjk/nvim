@@ -60,7 +60,9 @@ keymap.set("n", "<leader>bb", ":bprevious<CR>")
 keymap.set("n", "<leader>bn", ":bnext<CR>")
 keymap.set("n", "<leader>x", ":bd<CR>")
 keymap.set("n", "<leader>bo", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<leader>bce", ":BufferLineCloseOthers<CR>") -- open new tab
+keymap.set("n", "<leader>bce", ":BufferLineCloseOthers<CR>") -- close everything except current tab
+keymap.set("n", "<leader>bcl", ":BufferLineCloseLeft<CR>") -- close everything to the left of current tab
+keymap.set("n", "<leader>bcr", ":BufferLineCloseRight<CR>") -- close everything to the right of current tab
 
 -- Telescope-tabs
 keymap.set("n", "<leader>bf", ":Telescope telescope-tabs list_tabs<CR>")
