@@ -82,7 +82,7 @@ return {
     },
     {
       "theHamsta/nvim-dap-virtual-text",
-      config = {
+      opts = {
         enabled = true,
         enabled_commands = true,
         highlight_changed_variables = true,
