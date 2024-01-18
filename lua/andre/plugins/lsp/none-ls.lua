@@ -48,12 +48,18 @@ return {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              vim.lsp.buf.format({
-                filter = function(client)
-                  --  only use null-ls for formatting instead of lsp server
-                  return client.name == "null-ls"
+              -- vim.lsp.buf.format({
+              --   filter = function(client)
+              --     --  only use null-ls for formatting instead of lsp server
+              --     return client.name == "null-ls"
+              --   end,
+              --   bufnr = bufnr,
+              -- })
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                pattern = "*",
+                callback = function(args)
+                  require("conform").format({ bufnr = args.buf })
                 end,
-                bufnr = bufnr,
               })
             end,
           })
