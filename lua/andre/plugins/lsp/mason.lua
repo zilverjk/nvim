@@ -49,7 +49,7 @@ return {
       ensure_installed = {
         "prettier", -- ts/js formatter
         "stylua", -- lua formatter
-        "eslint_d", -- ts/js linter
+        "eslint-lsp", -- ts/js linter
         "mypy",
         "ruff",
         "pyright",
