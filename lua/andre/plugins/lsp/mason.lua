@@ -48,8 +48,8 @@ return {
       -- list of formatters & linters for mason to install
       ensure_installed = {
         "prettier", -- ts/js formatter
-        "stylua", -- lua formatter
-        "eslint-lsp", -- ts/js linter
+        "stylua",   -- lua formatter
+        "eslint_d", -- ts/js linter
         "mypy",
         "ruff",
         "pyright",
