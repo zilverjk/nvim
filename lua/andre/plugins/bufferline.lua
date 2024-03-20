@@ -9,12 +9,9 @@ return {
       show_close_icon = false,
       show_buffer_close_icon = false,
       diagnostics = "nvim_lsp",
-      diagnostics_indicator = function(_, _, _, context)
-        if context.buffer:current() then
-          return ""
-        end
-
-        return ""
+      diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        local icon = level:match("error") and " " or " "
+        return " " .. icon
       end,
     },
   },
