@@ -22,6 +22,9 @@ keymap.set("n", "x", '"_x')
 keymap.set("n", "<leader>+", "<C-a>") -- increment
 keymap.set("n", "<leader>-", "<C-x>") -- decrement
 
+-- toggle line numbers
+keymap.set("n", "<leader>ln", ":set rnu!<CR>")
+
 -- move lines or blocks
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -69,6 +72,3 @@ keymap.set("n", "<leader>bcr", ":BufferLineCloseRight<CR>")  -- close everything
 
 -- Telescope-tabs
 keymap.set("n", "<leader>bf", ":Telescope telescope-tabs list_tabs<CR>")
-
--- Noice
-keymap.set("n", "<leader>nn", ":NoiceDismiss<CR>", { noremap = true })
