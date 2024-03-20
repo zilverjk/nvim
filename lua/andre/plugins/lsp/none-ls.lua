@@ -17,7 +17,7 @@ return {
       end
     end
 
-    local eslint_root_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.json" }
+    local eslint_root_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.json", ".eslintrc.cjs" }
     local prettier_root_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.json" }
     local stylua_root_files = { "stylua.toml", ".stylua.toml" }
 

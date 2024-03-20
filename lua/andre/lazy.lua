@@ -12,6 +12,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "andre.plugins" }, { import = "andre.plugins.lsp" } }, {
+  ui = {
+    icons = {
+      ft = "",
+      lazy = "󰂠 ",
+      loaded = "",
+      not_loaded = "",
+    },
+  },
   install = {
     colorscheme = { "nightfly" },
   },
