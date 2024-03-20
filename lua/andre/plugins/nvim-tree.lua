@@ -15,6 +15,9 @@ return {
         width = 60,
         relativenumber = true,
       },
+      filesystem_watchers = {
+        enable = true,
+      },
       renderer = {
         group_empty = true,
         indent_markers = {
@@ -23,6 +26,9 @@ return {
         icons = {
           show = {
             git = false,
+            file = true,
+            folder = true,
+            folder_arrow = true,
           },
           glyphs = {
             default = "󰈚",
@@ -50,8 +56,14 @@ return {
         custom = { ".DS_Store", "^\\.git$" },
       },
       git = {
-        ignore = false,
+        enable = false,
+        ignore = true,
       },
+      update_focused_file = {
+        enable = true,
+        update_root = false,
+      },
+      sync_root_with_cwd = true,
     })
   end,
 }
