@@ -72,3 +72,15 @@ keymap.set("n", "<leader>bcr", ":BufferLineCloseRight<CR>")  -- close everything
 
 -- Telescope-tabs
 keymap.set("n", "<leader>bf", ":Telescope telescope-tabs list_tabs<CR>")
+
+-- LSP Formatting
+keymap.set("n", "<leader>fm", function()
+  vim.lsp.buf.format({ async = true })
+end)
+
+-- Neotest
+keymap.set("n", "<leader>tr", ":Neotest run<CR>")
+keymap.set("n", "<leader>ts", ":Neotest stop<CR>")
+keymap.set("n", "<leader>tm", ":Neotest summary<CR>")
+keymap.set("n", "<leader>to", ":Neotest output<CR>")
+keymap.set("n", "<leader>tp", ":Neotest output-panel<CR>")
