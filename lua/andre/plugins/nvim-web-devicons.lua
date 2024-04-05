@@ -14,6 +14,12 @@ return {
         cterm_color = "67",
         name = "JavaScript",
       },
+      cjs = {
+        icon = "",
+        color = "#FFCA28",
+        cterm_color = "67",
+        name = "JavaScript",
+      },
       gql = {
         icon = "󰡷",
         color = "#e535ab",
