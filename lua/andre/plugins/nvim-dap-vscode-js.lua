@@ -1,5 +1,22 @@
 return {
   "mxsdev/nvim-dap-vscode-js",
+  dependencies = {
+    "mfussenegger/nvim-dap",
+    {
+      "microsoft/vscode-js-debug",
+      build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+    },
+    {
+      "theHamsta/nvim-dap-virtual-text",
+      opts = {
+        enabled = true,
+        enabled_commands = true,
+        highlight_changed_variables = true,
+        highlight_new_as_changed = false,
+        show_stop_reason = true,
+      },
+    },
+  },
   config = function()
     local utils = require("dap-vscode-js.utils")
 
@@ -25,17 +42,18 @@ return {
     -- Config para debuggear Node
     for _, language in ipairs(node) do
       nvim_dap.configurations[language] = {
-        -- {
-        --   type = "pwa-node",
-        --   request = "launch",
-        --   name = "Launch file",
-        --   program = "${file}",
-        --   cwd = "${workspaceFolder}",
-        -- },
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Launch file",
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+        },
         {
           type = "pwa-node",
           request = "attach",
           name = "Attach",
+          processId = require("dap.utils").pick_process,
           cwd = "${workspaceFolder}",
         },
       }
@@ -64,31 +82,16 @@ return {
       }
     end
 
-    local keymap = vim.keymap
-    keymap.set("n", "<F5>", nvim_dap.continue)
-    keymap.set("n", "<F10>", nvim_dap.step_over)
-    keymap.set("n", "<F11>", nvim_dap.step_into)
-    keymap.set("n", "<F12>", nvim_dap.step_out)
-    keymap.set("n", "<leader>tb", nvim_dap.toggle_breakpoint)
-    keymap.set("n", "<leader>tB", function()
+    local key = vim.keymap
+    key.set("n", "<F5>", nvim_dap.continue)
+    key.set("n", "<F10>", nvim_dap.step_over)
+    key.set("n", "<F11>", nvim_dap.step_into)
+    key.set("n", "<F12>", nvim_dap.step_out)
+    key.set("n", "<leader>tb", nvim_dap.toggle_breakpoint)
+    key.set("n", "<leader>tB", function()
       nvim_dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
     end)
+    key.set("n", "<F3>", nvim_dap.repl.toggle)
+    key.set("n", "<F4>", nvim_dap.terminate)
   end,
-  dependencies = {
-    "mfussenegger/nvim-dap",
-    {
-      "microsoft/vscode-js-debug",
-      build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-    },
-    {
-      "theHamsta/nvim-dap-virtual-text",
-      opts = {
-        enabled = true,
-        enabled_commands = true,
-        highlight_changed_variables = true,
-        highlight_new_as_changed = false,
-        show_stop_reason = true,
-      },
-    },
-  },
 }

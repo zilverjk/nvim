@@ -81,6 +81,9 @@ key.set("n", "<leader>ts", ":Neotest stop<CR>")
 key.set("n", "<leader>tm", ":Neotest summary<CR>")
 key.set("n", "<leader>to", ":Neotest output<CR>")
 key.set("n", "<leader>tp", ":Neotest output-panel<CR>")
+key.set("n", "<leader>td", function()
+  require("neotest").run.run({ strategy = "dap" })
+end)
 
 -- DAP UI
 key.set("n", "<F2>", ":lua require('dapui').toggle()<CR>")
