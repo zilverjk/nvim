@@ -6,5 +6,12 @@ return {
     "SmiteshP/nvim-navic",
     "nvim-tree/nvim-web-devicons",
   },
-  opts = {},
+  opts = {
+    exclude_filetypes = {
+      "gitcommit",
+      "toggleterm",
+      "neo-tree",
+    },
+    create_autocmd = false,
+  },
 }
