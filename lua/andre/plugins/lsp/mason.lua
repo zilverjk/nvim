@@ -33,6 +33,7 @@ return {
         "emmet_ls",
         "pyright",
         "gopls",
+        "rust_analyzer",
       },
       automatic_installation = true, -- not the same as ensure_installed
     })
