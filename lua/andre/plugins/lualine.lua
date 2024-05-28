@@ -15,14 +15,14 @@ return {
 
     local bubbles_theme = {
       normal = {
-        a = { fg = colors.black, bg = colors.violet, gui = "bold" },
+        a = { fg = colors.black, bg = colors.blue, gui = "bold" },
         b = { fg = colors.white, bg = colors.grey },
         c = { fg = colors.white },
       },
 
       command = { a = { bg = colors.yellow, fg = colors.black, gui = "bold" } },
-      insert = { a = { fg = colors.black, bg = colors.blue, gui = "bold" } },
-      visual = { a = { fg = colors.black, bg = colors.cyan, gui = "bold" } },
+      insert = { a = { fg = colors.black, bg = colors.cyan, gui = "bold" } },
+      visual = { a = { fg = colors.black, bg = colors.violet, gui = "bold" } },
       replace = { a = { fg = colors.black, bg = colors.red, gui = "bold" } },
 
       inactive = {
