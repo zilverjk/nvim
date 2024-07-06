@@ -17,7 +17,7 @@ return {
       end
     end
 
-    local eslint_root_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.json", ".eslintrc.cjs" }
+    local eslint_root_files = { ".eslintrc", ".eslintrc.js", "eslint.config.js", ".eslintrc.json", ".eslintrc.cjs" }
     local prettier_root_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.json" }
     local stylua_root_files = { "stylua.toml", ".stylua.toml" }
 
@@ -26,6 +26,7 @@ return {
         condition = function(utils)
           local has_eslint = root_has_file(eslint_root_files)(utils)
           local has_prettier = root_has_file(prettier_root_files)(utils)
+
           return has_eslint and not has_prettier
         end,
       },
@@ -54,9 +55,9 @@ return {
         formatting.black,
         diagnostics.mypy,
         -- Go
-        formatting.gofumpt,           -- go install -v github.com/incu6us/goimports-reviser/v3@latest
+        formatting.gofumpt, -- go install -v github.com/incu6us/goimports-reviser/v3@latest
         formatting.goimports_reviser, -- go install mvdan.cc/gofumpt@latest
-        formatting.golines,           -- go install github.com/segmentio/golines@latest
+        formatting.golines, -- go install github.com/segmentio/golines@latest
       },
       -- configure format on save
       on_attach = function(client, bufnr)
