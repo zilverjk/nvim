@@ -148,6 +148,42 @@ return {
       },
     })
 
+    -- configure eslint server
+    lspconfig["eslint"].setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+      end,
+      settings = {
+        workingDirectory = { mode = "location" },
+      },
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+        "vue",
+        "svelte",
+        "astro",
+      },
+      root_dir = lspconfig_util.root_pattern(
+        ".eslintrc",
+        ".eslintrc.cjs",
+        ".eslintrc.mjs",
+        ".eslintrc.js",
+        ".eslintrc.json",
+        ".eslintrc.yaml",
+        ".eslintrc.yml"
+      ),
+    })
+
     lspconfig["cssls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -158,10 +194,6 @@ return {
       on_attach = on_attach,
     })
 
-    -- lspconfig["svelte"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    -- })
     lspconfig["svelte"].setup({
       capabilities = capabilities,
       on_attach = function(client, bufnr)
@@ -222,22 +254,22 @@ return {
     })
 
     -- configure rust server
-    -- lspconfig["rust_analyzer"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    --   filetypes = { "rust" },
-    --   root_dir = lspconfig_util.root_pattern("Cargo.toml"),
-    --   settings = {
-    --     ["rust-analyzer"] = {
-    --       cargo = {
-    --         allFeatures = true,
-    --       },
-    --       checkOnSave = {
-    --         command = "clippy",
-    --       },
-    --     },
-    --   },
-    -- })
+    lspconfig["rust_analyzer"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { "rust" },
+      root_dir = lspconfig_util.root_pattern("Cargo.toml"),
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = {
+            allFeatures = true,
+          },
+          checkOnSave = {
+            command = "clippy",
+          },
+        },
+      },
+    })
 
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({

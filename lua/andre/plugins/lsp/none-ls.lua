@@ -8,8 +8,8 @@ return {
     local formatting = null_ls.builtins.formatting
     local diagnostics = null_ls.builtins.diagnostics
 
-    local eslintDiagnostics = require("none-ls.diagnostics.eslint_d")
-    local eslintFormatting = require("none-ls.formatting.eslint_d")
+    -- local eslintDiagnostics = require("none-ls.diagnostics.eslint_d")
+    -- local eslintFormatting = require("none-ls.formatting.eslint_d")
 
     local root_has_file = function(files)
       return function(utils)
@@ -46,8 +46,8 @@ return {
     null_ls.setup({
       sources = {
         -- JS/TS
-        eslintDiagnostics.with(opts.eslint_diagnostics),
-        eslintFormatting.with(opts.eslint_formatting),
+        -- eslintDiagnostics.with(opts.eslint_diagnostics),
+        -- eslintFormatting.with(opts.eslint_formatting),
         formatting.prettier.with(opts.prettier_formatting),
         -- Lua
         formatting.stylua,
@@ -55,9 +55,9 @@ return {
         formatting.black,
         diagnostics.mypy,
         -- Go
-        formatting.gofumpt, -- go install -v github.com/incu6us/goimports-reviser/v3@latest
+        formatting.gofumpt,           -- go install -v github.com/incu6us/goimports-reviser/v3@latest
         formatting.goimports_reviser, -- go install mvdan.cc/gofumpt@latest
-        formatting.golines, -- go install github.com/segmentio/golines@latest
+        formatting.golines,           -- go install github.com/segmentio/golines@latest
       },
       -- configure format on save
       on_attach = function(client, bufnr)

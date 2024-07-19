@@ -22,6 +22,9 @@ return {
         }),
         require("neotest-vitest"),
       },
+      discovery = {
+        enabled = false,
+      },
     })
   end,
 }
