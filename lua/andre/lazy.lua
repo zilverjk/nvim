@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -21,7 +22,7 @@ require("lazy").setup({ { import = "andre.plugins" }, { import = "andre.plugins.
     },
   },
   install = {
-    colorscheme = { "nightfly" },
+    colorscheme = { "cyberdream" },
   },
   checker = {
     enabled = true,

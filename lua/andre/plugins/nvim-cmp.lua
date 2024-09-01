@@ -22,7 +22,34 @@ return {
         completeopt = "menu,menuone,preview,noselect",
       },
       window = {
-        documentation = cmp.config.window.bordered(),
+        completion = {
+          border = {
+            { "󱐋", "WarningMsg" },
+            { "─", "Comment" },
+            { "╮", "Comment" },
+            { "│", "Comment" },
+            { "╯", "Comment" },
+            { "─", "Comment" },
+            { "╰", "Comment" },
+            { "│", "Comment" },
+          },
+          scrollbar = false,
+          winblend = 0,
+        },
+        documentation = {
+          border = {
+            { "󰙎", "DiagnosticHint" },
+            { "─", "Comment" },
+            { "╮", "Comment" },
+            { "│", "Comment" },
+            { "╯", "Comment" },
+            { "─", "Comment" },
+            { "╰", "Comment" },
+            { "│", "Comment" },
+          },
+          scrollbar = false,
+          winblend = 0,
+        },
       },
       snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)

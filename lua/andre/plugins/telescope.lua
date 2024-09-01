@@ -52,6 +52,11 @@ return {
           },
         },
       },
+      pickers = {
+        find_files = {
+          find_command = { "rg", "--ignore", "--hidden", "--files", "-u" },
+        },
+      },
     })
 
     telescope.load_extension("fzf")
