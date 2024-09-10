@@ -67,7 +67,7 @@ return {
       opts.desc = "Orginize imports"
       keymap.set("n", "<leader>oi", ":OrganizeImports<CR>", opts)
 
-      if client.name == "tsserver" then
+      if client.name == "ts_ls" then
         -- Need to disable formatting because we will use eslint or prettier instead
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
@@ -104,7 +104,7 @@ return {
     })
 
     -- configure typescript server with plugin
-    lspconfig["tsserver"].setup({
+    lspconfig["ts_ls"].setup({
       capabilities = capabilities,
       filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
       init_options = {
