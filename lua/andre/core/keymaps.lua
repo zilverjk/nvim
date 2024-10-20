@@ -87,3 +87,8 @@ end)
 
 -- DAP UI
 key.set("n", "<F2>", ":lua require('dapui').toggle()<CR>")
+
+-- Theme Switcher
+key.set("n", "<leader>th", function()
+  require("nvchad.themes").open({ style = "flat" })
+end, {})

@@ -8,9 +8,6 @@ return {
     local formatting = null_ls.builtins.formatting
     local diagnostics = null_ls.builtins.diagnostics
 
-    -- local eslintDiagnostics = require("none-ls.diagnostics.eslint_d")
-    -- local eslintFormatting = require("none-ls.formatting.eslint_d")
-
     local root_has_file = function(files)
       return function(utils)
         return utils.root_has_file(files)
@@ -43,11 +40,16 @@ return {
 
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+      border = "rounded",
+      focusable = false,
+      silent = true,
+      max_height = 7,
+    })
+
     null_ls.setup({
       sources = {
         -- JS/TS
-        -- eslintDiagnostics.with(opts.eslint_diagnostics),
-        -- eslintFormatting.with(opts.eslint_formatting),
         formatting.prettier.with(opts.prettier_formatting),
         -- Lua
         formatting.stylua,

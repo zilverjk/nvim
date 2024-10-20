@@ -17,39 +17,9 @@ return {
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
     require("luasnip.loaders.from_vscode").lazy_load()
 
-    cmp.setup({
+    local options = {
       completion = {
         completeopt = "menu,menuone,preview,noselect",
-      },
-      window = {
-        completion = {
-          border = {
-            { "󱐋", "WarningMsg" },
-            { "─", "Comment" },
-            { "╮", "Comment" },
-            { "│", "Comment" },
-            { "╯", "Comment" },
-            { "─", "Comment" },
-            { "╰", "Comment" },
-            { "│", "Comment" },
-          },
-          scrollbar = false,
-          winblend = 0,
-        },
-        documentation = {
-          border = {
-            { "󰙎", "DiagnosticHint" },
-            { "─", "Comment" },
-            { "╮", "Comment" },
-            { "│", "Comment" },
-            { "╯", "Comment" },
-            { "─", "Comment" },
-            { "╰", "Comment" },
-            { "│", "Comment" },
-          },
-          scrollbar = false,
-          winblend = 0,
-        },
       },
       snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)
@@ -79,6 +49,10 @@ return {
           ellipsis_char = "...",
         }),
       },
-    })
+    }
+
+    options = vim.tbl_deep_extend("force", options, require("nvchad.cmp"))
+
+    cmp.setup(options)
   end,
 }
