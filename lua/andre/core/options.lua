@@ -42,3 +42,7 @@ opt.compatible = false
 
 -- swapfile
 opt.swapfile = true
+
+-- showmode
+opt.showmode = false
+opt.fillchars = "eob: "
