@@ -31,9 +31,9 @@ key.set("v", "K", ":m '<-2<CR>gv=gv")
 key.set("x", "<leader>p", '"_dP')
 
 -- window management
-key.set("n", "<leader>sv", "<C-w>v")     -- split window vertically
-key.set("n", "<leader>sh", "<C-w>s")     -- split window horizontally
-key.set("n", "<leader>se", "<C-w>=")     -- make split windows equal width & height
+key.set("n", "<leader>sv", "<C-w>v") -- split window vertically
+key.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
+key.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
 key.set("n", "<leader>sx", ":close<CR>") -- close current split window
 
 ----------------------
@@ -46,26 +46,35 @@ key.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximi
 key.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 
 -- telescope
-key.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")  -- find files within current working directory, respects .gitignore
-key.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")   -- find string in current working directory as you type
+key.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+key.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
 key.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-key.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")     -- list open buffers in current neovim instance
-key.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")   -- list available help tags
+key.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
+key.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
 -- telescope git commands (not on youtube nvim video)
-key.set("n", "<leader>g", ":Gedit<cr>")                        -- Show :Git panel
-key.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>")   -- list all git commits (use <cr> to checkout) ["gc" for git commits]
+key.set("n", "<leader>g", ":Gedit<cr>") -- Show :Git panel
+key.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 key.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
-key.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")  -- list git branches (use <cr> to checkout) ["gb" for git branch]
-key.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")    -- list current changes per file with diff preview ["gs" for git status]
+key.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
+key.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
 key.set("n", "<S-Tab>", ":bprevious<CR>")
 key.set("n", "<Tab>", ":bnext<CR>")
 key.set("n", "<leader>x", ":bd<CR>")
-key.set("n", "<leader>b", ":tabnew<CR>")                  -- open new tab
-key.set("n", "<leader>bce", ":BufferLineCloseOthers<CR>") -- close everything except current tab
-key.set("n", "<leader>bcl", ":BufferLineCloseLeft<CR>")   -- close everything to the left of current tab
-key.set("n", "<leader>bcr", ":BufferLineCloseRight<CR>")  -- close everything to the right of current tab
+key.set("n", "<leader>b", ":tabnew<CR>") -- open new tab
+key.set("n", "<leader>bce", function()
+  require("nvchad.tabufline").closeAllBufs(false)
+end)
+key.set("n", "<leader>bcl", function()
+  require("nvchad.tabufline").closeBufs_at_direction("left")
+end)
+key.set("n", "<leader>bcr", function()
+  require("nvchad.tabufline").closeBufs_at_direction("right")
+end)
+-- key.set("n", "<leader>bce", ":BufferLineCloseOthers<CR>") -- close everything except current tab
+-- key.set("n", "<leader>bcl", ":BufferLineCloseLeft<CR>")   -- close everything to the left of current tab
+-- key.set("n", "<leader>bcr", ":BufferLineCloseRight<CR>")  -- close everything to the right of current tab
 
 -- Telescope-tabs
 key.set("n", "<leader>bf", ":Telescope telescope-tabs list_tabs<CR>")
@@ -86,7 +95,7 @@ key.set("n", "<leader>td", function()
 end)
 
 -- DAP UI
-key.set("n", "<F2>", ":lua require('dapui').toggle()<CR>")
+key.set("n", "<C-a>", ":lua require('dapui').toggle()<CR>")
 
 -- Theme Switcher
 key.set("n", "<leader>th", function()

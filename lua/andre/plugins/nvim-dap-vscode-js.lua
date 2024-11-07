@@ -51,6 +51,18 @@ return {
         },
         {
           type = "pwa-node",
+          request = "launch",
+          name = "Launch Lambda",
+          runtimeExecutable = "node",
+          runtimeArgs = {
+            "--loader",
+            "ts-node/esm",
+          },
+          cwd = "${workspaceFolder}",
+          program = "script.ts",
+        },
+        {
+          type = "pwa-node",
           request = "attach",
           name = "Attach",
           processId = require("dap.utils").pick_process,
