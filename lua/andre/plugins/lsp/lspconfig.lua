@@ -174,6 +174,7 @@ return {
         "astro",
       },
       root_dir = lspconfig_util.root_pattern(
+        "eslint.config.js",
         ".eslintrc",
         ".eslintrc.cjs",
         ".eslintrc.mjs",
