@@ -15,6 +15,7 @@ M.base46 = {
     ["@reference"] = { italic = true },
     ["@comment"] = { italic = true },
   },
+  transparency = true,
 }
 
 M.ui = {
