@@ -24,6 +24,26 @@ return {
       name = "lldb",
     }
 
+    nvim_dap.adapters.java = {
+      {
+        type = "java",
+        request = "attach",
+        name = "Attach Java App Server",
+        hostName = "127.0.0.1",
+        port = 5005,
+      },
+      {
+        type = "java",
+        request = "launch",
+        classPaths = {},
+        modulePaths = {},
+        name = "Launch Java App",
+        mainClass = function()
+          return vim.fn.input("Main class: ", vim.fn.input("Main class: "))
+        end,
+      },
+    }
+
     nvim_dap.configurations.rust = {
       {
         type = "lldb",

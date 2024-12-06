@@ -57,9 +57,13 @@ return {
         formatting.black,
         diagnostics.mypy,
         -- Go
-        formatting.gofumpt,           -- go install -v github.com/incu6us/goimports-reviser/v3@latest
+        formatting.gofumpt, -- go install -v github.com/incu6us/goimports-reviser/v3@latest
         formatting.goimports_reviser, -- go install mvdan.cc/gofumpt@latest
-        formatting.golines,           -- go install github.com/segmentio/golines@latest
+        formatting.golines, -- go install github.com/segmentio/golines@latest
+        -- Java
+        formatting.google_java_format,
+        -- XML
+        formatting.xmllint,
       },
       -- configure format on save
       on_attach = function(client, bufnr)
@@ -71,8 +75,10 @@ return {
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
             buffer = bufnr,
+            -- pattern = "*",
             callback = function()
               vim.lsp.buf.format({ bufnr = bufnr })
+              -- require("conform").format({ bufnr = args.buf })
             end,
           })
         end

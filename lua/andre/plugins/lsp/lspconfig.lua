@@ -236,15 +236,6 @@ return {
       filetypes = { "python" },
     })
 
-    -- configure java server
-    lspconfig["jdtls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      cmd = { "jdtls" },
-      filetypes = { "java" },
-      root_dir = lspconfig_util.root_pattern("pom.xml", "gradle.build"),
-    })
-
     -- configure golang server
     lspconfig["gopls"].setup({
       capabilities = capabilities,
@@ -261,6 +252,22 @@ return {
           },
         },
       },
+    })
+
+    -- configure java server
+    lspconfig["jdtls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      servers = {
+        jdtls = {
+          cmd = {
+            "jdtls",
+            "-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/plugins/lombok.jar",
+          },
+        },
+      },
+      filetypes = { "java" },
+      root_dir = lspconfig_util.root_pattern("pom.xml", "gradle.build"),
     })
 
     -- configure rust server

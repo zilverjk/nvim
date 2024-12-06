@@ -34,20 +34,21 @@ return {
         "pyright",
         "gopls",
         "rust_analyzer",
+        "jdtls",
       },
       automatic_installation = true, -- not the same as ensure_installed
     })
 
     mason_null_ls.setup({
       ensure_installed = {
-        "prettier", -- ts/js formatter
-        "stylua",   -- lua formatter
-        -- "eslint_d", -- ts/js linter
-        "eslint",   -- ts/js linter
+        "prettier",
+        "stylua",
+        "eslint",
         "mypy",
         "ruff",
         "pyright",
         "black",
+        "xmlformatter",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = false,
