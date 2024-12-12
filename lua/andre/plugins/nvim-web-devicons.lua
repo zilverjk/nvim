@@ -32,6 +32,18 @@ return {
         cterm_color = "166",
         name = "Git",
       },
+      ["cypress.config.ts"] = {
+        icon = "",
+        color = "#FFFFFF",
+        cterm_color = "231",
+        name = "Cypress",
+      },
+      ["cypress.json"] = {
+        icon = "",
+        color = "#FFFFFF",
+        cterm_color = "231",
+        name = "Cypress",
+      },
     })
   end,
 }
