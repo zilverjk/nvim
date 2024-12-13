@@ -44,6 +44,12 @@ return {
         cterm_color = "231",
         name = "Cypress",
       },
+      ["vitest.config.ts"] = {
+        icon = "",
+        color = "#239632",
+        cterm_color = "209",
+        name = "Vitest",
+      },
     })
   end,
 }
